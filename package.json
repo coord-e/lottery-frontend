@@ -71,7 +71,8 @@
     "webpack": "3.8.1",
     "webpack-dev-server": "2.10.0",
     "webpack-manifest-plugin": "1.3.2",
-    "whatwg-fetch": "2.0.3"
+    "whatwg-fetch": "2.0.3",
+    "snyk": "^1.192.0"
   },
   "scripts": {
     "build:css": "node-sass-chokidar --include-path src/style --include-path node_modules $ADDITIONAL_CSS_BUILD_OPTS src/style -o src/style",
@@ -83,7 +84,9 @@
     "test": "node scripts/test.js --env=jsdom",
     "start:deps": "chokidar ./package.json -c 'yarn install --modules-folder /node_modules'",
     "lint": "eslint .",
-    "fix": "yarn run lint --fix"
+    "fix": "yarn run lint --fix",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -127,5 +130,6 @@
       "react-app",
       "mobx"
     ]
-  }
+  },
+  "snyk": true
 }
